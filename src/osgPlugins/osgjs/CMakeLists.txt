@@ -10,6 +10,7 @@ SET(TARGET_H
     Animation.h
     Base64.h
     CompactBufferVisitor.h
+    json.hpp
     JSON_Objects.h
     json_stream.h
     utf8_string.h
