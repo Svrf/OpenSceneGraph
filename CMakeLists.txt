@@ -957,6 +957,7 @@ SET(CMAKE_LIBRARY_PATH ${CMAKE_LIBRARY_PATH} CACHE STRING "You may add additiona
 # This is unofficial so this may be removed or changed at anytime.
 SET(CMAKE_PREFIX_PATH ${CMAKE_PREFIX_PATH} CACHE STRING "(EXPERIMENTAL) You may add additional search paths here. Use ; to separate multiple paths.")
 
+SET(CMAKE_CXX_STANDARD 11)
 
 # This is for an advanced option to give aggressive warnings
 # under different compilers. If yours is not implemented, this option
