@@ -13,8 +13,9 @@
 #include <osgAnimation/StackedMatrixElement>
 #include <osgAnimation/StackedScaleElement>
 #include <osg/Array>
-#include "JSON_Objects"
-#include "WriteVisitor"
+
+#include "JSON_Objects.h"
+#include "WriteVisitor.h"
 
 
 template<typename T>

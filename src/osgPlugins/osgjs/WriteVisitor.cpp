@@ -1,4 +1,3 @@
-#include "WriteVisitor"
 #include <osgDB/WriteFile>
 #include <osgDB/FileUtils>
 #include <osgDB/ReadFile>
@@ -15,7 +14,8 @@
 
 #include <osgAnimation/MorphGeometry>
 
-#include "Base64"
+#include "WriteVisitor.h"
+#include "Base64.h"
 
 
 osg::Array* getTangentSpaceArray(osg::Geometry& geometry) {

@@ -6,14 +6,14 @@ SET(TARGET_SRC
     WriteVisitor.cpp)
 
 SET(TARGET_H
-    Adaptor
-    Animation
-    Base64
-    CompactBufferVisitor
-    JSON_Objects
-    json_stream
-    utf8_string
-    WriteVisitor
+    Adaptor.h
+    Animation.h
+    Base64.h
+    CompactBufferVisitor.h
+    JSON_Objects.h
+    json_stream.h
+    utf8_string.h
+    WriteVisitor.h
 )
 
 IF($ENV{SKETCHFAB_BUILD})

@@ -24,11 +24,11 @@
 
 #include <vector>
 
-#include "json_stream"
-#include "JSON_Objects"
-#include "Animation"
-#include "CompactBufferVisitor"
-#include "WriteVisitor"
+#include "json_stream.h"
+#include "JSON_Objects.h"
+#include "Animation.h"
+#include "CompactBufferVisitor.h"
+#include "WriteVisitor.h"
 
 
 
