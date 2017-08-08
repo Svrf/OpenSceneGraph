@@ -19,6 +19,7 @@ src/osgQt/__
 
 lib/
 bin/
+tmp/
 
 *.pc
 *.conf
