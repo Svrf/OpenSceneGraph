@@ -80,8 +80,11 @@ PlatformSpecifics/Windows/*.rc
 *.sdf
 *.opensdf
 
-#osx xcode
+# osx xcode
 DerivedData/
 *.DS_Store
 *.build
 *.xcodeproj
+
+# vim
+*.swp
