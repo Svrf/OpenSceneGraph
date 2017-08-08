@@ -157,7 +157,6 @@ public:
     }
 
     virtual ReadResult readNode(const std::string& fileName, const Options* options) const;
-    ReadResult readNode(const json& data) const;
 
     virtual WriteResult writeNode(const Node& node, const std::string& fileName, const osgDB::ReaderWriter::Options* options) const;
     virtual WriteResult writeNode(const Node& node, json_stream& fout, const osgDB::ReaderWriter::Options* options) const;
