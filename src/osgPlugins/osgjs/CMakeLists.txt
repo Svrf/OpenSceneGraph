@@ -2,8 +2,11 @@ SET(TARGET_SRC
     Animation.cpp
     Base64.cpp
     JSON_Objects.cpp
+    WriteVisitor.cpp
+    ReaderJSON.cpp
+    WriterJSON.cpp
     ReaderWriterJSON.cpp
-    WriteVisitor.cpp)
+)
 
 SET(TARGET_H
     Adaptor.h
@@ -15,6 +18,7 @@ SET(TARGET_H
     json_stream.h
     utf8_string.h
     WriteVisitor.h
+    ReaderWriterJSON.h
 )
 
 IF($ENV{SKETCHFAB_BUILD})
