@@ -3,8 +3,9 @@
 
 using ReadResult = ReaderWriterJSON::ReadResult;
 
-osg::Group* readGroup(const json::object_t& data);
-osg::Node* readNode(const json::object_t& data);
+namespace osgjs {
+osg::Node* read(const json::object_t& data);
+};
 
 ReadResult ReaderWriterJSON::readNode(const std::string& fileName,
                                       const Options* options) const {
@@ -17,64 +18,39 @@ ReadResult ReaderWriterJSON::readNode(const std::string& fileName,
     osgDB::ifstream fin(dataFile.c_str());
     if (fin) {
       json data = json::parse(fin);
-      return readGroup(data);
+      return osgjs::read(data);
     }
     return 0L;
 }
 
-enum struct Key {
-  Generator,
-  Version,
-  Node,
-  Children,
-  UniqueID,
-  Name,
-  Geometry,
-  PrimitiveSetList,
-  DrawElementUShort,
-  Indices,
-  File,
-};
+#define KEYS(m) \
+  m(Generator) \
+  m(Version) \
+  m(Node)
 
-Key parseKey(const std::string& key) {
+#define ENUM_VAL(val) val##,
+#define ENUM_DEF(name, vals) enum name { vals(KEYS_ENUM_VAL) };
+#define ENUM_HASH(vals) const std::string keys[] = { vals(KEYS_ENUM_VAL) };
+#define ENUM_LOOKUP(name) \
+  typeName parse##typeName##(const std::string& str) { \
+    for (int i = 0; i <
+  }
 
-    if (key == "Generator") {
-      return Key::Generator;
-    } else if (key == "Version") {
-      return Key::Version;
-    } else if (key == "osg.Node") {
-      return Key::Node;
-    } else if (key == "Children") {
-      return Key::Children;
-    } else if (key == "UniqueID") {
-      return Key::UniqueID;
-    } else if (key == "Name") {
-      return Key::Name;
-    } else if (key == "osg.Geometry") {
-      return Key::Geometry;
-    } else if (key == "PrimitiveSetList") {
-      return Key::PrimitiveSetList;
-    } else if (key == "DrawElementUShort") {
-      return Key::DrawElementUShort;
-    } else if (key == "Indices") {
-      return Key::Indices;
-    } else if (key == "File") {
-      return Key::File;
-    }
+KEYS_ENUM_DEF(KEYS);
+KEYS_ENUM_LOOKUP(KEYS);
 
-    return Key();
-}
+osg::Node* readNode(const json::object_t& data);
 
-osg::Group* readGroup(const json::object_t& data) {
-    osg::Group* group = new osg::Group;
+osg::Node* read(const json::object_t& data) {
+    osg::Node* node = new osg::Node;
 
     for (const auto& it : data) {
-        switch (parseKey(it.first)) {
-        case Key::Generator:
-        case Key::Version:
+        switch (keys[it.first]) {
+        case Generator:
+        case Version:
             std::cout << it.first << std::endl;
             break;
-        case Key::Node:
+        case Node:
             group->addChild(readNode(it.second));
             break;
         default:
@@ -100,3 +76,4 @@ osg::Node* readNode(const json::object_t& data) {
 
     return node;
 }
+};
